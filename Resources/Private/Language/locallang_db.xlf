@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-10-23T14:35:29Z" product-name="turnierverwaltung">
+		<header/>
+		<body>
+			<trans-unit id="tx_turnierverwaltung_domain_model_turnier">
+				<source>Turnier</source>
+			</trans-unit>
+			<trans-unit id="tx_turnierverwaltung_domain_model_turnier.titel">
+				<source>Titel</source>
+			</trans-unit>
+			<trans-unit id="tx_turnierverwaltung_domain_model_turnier.location">
+				<source>Location</source>
+			</trans-unit>
+			<trans-unit id="tx_turnierverwaltung_domain_model_turnier.dateturnier">
+				<source>Dateturnier</source>
+			</trans-unit>
+			<trans-unit id="tx_turnierverwaltung_domain_model_turnier.spieler">
+				<source>Spieler</source>
+			</trans-unit>
+			<trans-unit id="tx_turnierverwaltung_domain_model_spieler">
+				<source>Spieler</source>
+			</trans-unit>
+			<trans-unit id="tx_turnierverwaltung_domain_model_spieler.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_turnierverwaltung_domain_model_spieler.strength">
+				<source>Strength</source>
+			</trans-unit>
+			<trans-unit id="tx_turnierverwaltung_domain_model_spieler.spielmodus">
+				<source>Spielmodus</source>
+			</trans-unit>
+			<trans-unit id="tx_turnierverwaltung_domain_model_spielmodus">
+				<source>Spielmodus</source>
+			</trans-unit>
+			<trans-unit id="tx_turnierverwaltung_domain_model_spielmodus.single">
+				<source>Single</source>
+			</trans-unit>
+			<trans-unit id="tx_turnierverwaltung_domain_model_spielmodus.doppel">
+				<source>Doppel</source>
+			</trans-unit>
+			<trans-unit id="tx_turnierverwaltung_domain_model_spielmodus.mixed">
+				<source>Mixed</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-10-23T14:35:29Z" product-name="turnierverwaltung">
+		<header/>
+		<body>
+			<trans-unit id="titel.description">
+				<source>titel of the turnier</source>
+			</trans-unit>
+			<trans-unit id="location.description">
+				<source>location of the turnier</source>
+			</trans-unit>
+			<trans-unit id="dateturnier.description">
+				<source>date of the turnier</source>
+			</trans-unit>
+			<trans-unit id="spieler.description">
+				<source>spieler</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
