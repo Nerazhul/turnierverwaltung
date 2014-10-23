@@ -13,12 +13,6 @@ plugin.tx_turnierverwaltung {
 		# uncomment the following line to enable the new Property Mapper.
 		# rewrittenPropertyMapper = 1
 	}
-
-        settings{
-                blog {
-                        max = 5
-                }
-        }
 }
 
 plugin.tx_turnierverwaltung._CSS_DEFAULT_STYLE (
