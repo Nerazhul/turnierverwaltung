@@ -1,0 +1,25 @@
+<h1>{headline}</h1>
+
+<f:form action="{action}" object="{spieler}" name="spieler" arguments="{turnier:turnier}" additionalAttributes="{role:'form'}">
+    <div class="form-group">
+        <label>Spieler-Name</label>
+        <f:form.textfield property="name" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Spieler-Stärke</label>
+        <f:form.select  options="{strengthone:'1',strengthtwo:'2',strengththree:'3'}" property="strength" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Spieler-Modus</label>
+    </div>
+
+    <div class="form-group">
+        <label>Spieler-Stärke</label>
+        <f:form.select  options="{male:'male',female:'female'}" property="gender" class="form-control" />
+    </div>
+
+    <f:form.submit value="{submitmessage}" class="btn btn-primary" />
+    
+</f:form>

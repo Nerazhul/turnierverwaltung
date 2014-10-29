@@ -63,7 +63,7 @@ $GLOBALS['TCA']['tx_turnierverwaltung_domain_model_spieler'] = array(
 			'starttime' => 'starttime',
 			'endtime' => 'endtime',
 		),
-		'searchFields' => 'name,strength,spielmodus,',
+		'searchFields' => 'name,strength,gender,spielmodus,',
 		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Spieler.php',
 		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_turnierverwaltung_domain_model_spieler.gif'
 	),

@@ -60,7 +60,7 @@
                             "propertyIsExcludeField": false,
                             "propertyIsRequired": true,
                             "propertyName": "dateturnier",
-                            "propertyType": "NativeDate",
+                            "propertyType": "NativeDateTime",
                             "uid": "13382040635"
                         }
                     ]
@@ -73,7 +73,7 @@
                             "propertyIsExcludeField": true,
                             "relationDescription": "",
                             "relationName": "spieler",
-                            "relationType": "zeroToOne",
+                            "relationType": "manyToMany",
                             "relationWire": "[wired]",
                             "uid": "1204117684914"
                         }
@@ -133,6 +133,16 @@
                             "propertyName": "strength",
                             "propertyType": "Integer",
                             "uid": "505964874740"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": false,
+                            "propertyIsRequired": true,
+                            "propertyName": "gender",
+                            "propertyType": "String",
+                            "uid": "1302997387825"
                         }
                     ]
                 },
@@ -144,7 +154,7 @@
                             "propertyIsExcludeField": true,
                             "relationDescription": "",
                             "relationName": "spielmodus",
-                            "relationType": "zeroToOne",
+                            "relationType": "manyToMany",
                             "relationWire": "[wired]",
                             "uid": "708080480184"
                         }
@@ -239,7 +249,7 @@
         },
         "extensionKey": "turnierverwaltung",
         "name": "Turnierverwaltung",
-        "originalExtensionKey": "",
+        "originalExtensionKey": "turnierverwaltung",
         "persons": [],
         "plugins": [],
         "vendorName": "Vaupel"
@@ -271,7 +281,7 @@
         }
     ],
     "log": {
-        "last_modified": "2014-10-23 02:35",
+        "last_modified": "2014-10-29 10:17",
         "extension_builder_version": "6.2.0",
         "be_user": " (1)"
     }

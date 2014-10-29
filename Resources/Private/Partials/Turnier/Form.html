@@ -1,0 +1,22 @@
+<h1>{headline}</h1>
+
+<f:form action="{action}" object="{turnier}" name="turnier" additionalAttributes="{role:'form'}">
+
+    <div class="form-group">
+        <label>Turnier-Name</label>
+        <f:form.textfield property="titel" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Turnier-Datum</label>
+        <f:form.textfield property="dateturnier" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Turnier-Ort</label>
+        <f:form.textfield property="location" class="form-control" />
+    </div>
+
+    <f:form.submit value="{submitmessage}" class="btn btn-primary" />
+
+</f:form>

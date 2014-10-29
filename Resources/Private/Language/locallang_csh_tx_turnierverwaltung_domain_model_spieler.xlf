@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2014-10-23T14:35:29Z" product-name="turnierverwaltung">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-10-29T10:17:34Z" product-name="turnierverwaltung">
 		<header/>
 		<body>
 			<trans-unit id="name.description">
@@ -8,6 +8,9 @@
 			</trans-unit>
 			<trans-unit id="strength.description">
 				<source>strength</source>
+			</trans-unit>
+			<trans-unit id="gender.description">
+				<source>gender</source>
 			</trans-unit>
 			<trans-unit id="spielmodus.description">
 				<source>spielmodus</source>

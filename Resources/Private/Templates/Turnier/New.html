@@ -1,22 +1,2 @@
-<h1 xmlns:f="http://www.w3.org/1999/html">Neues Turnier anlegen</h1>
-
-        <f:form action="create" object="{newTurnier}" name="newTurnier" additionalAttributes="{role:'form'}">
-
-            <div class="form-group">
-                <label>Turnier-Name</label>
-                <f:form.textfield property="titel" class="form-control" />
-            </div>
-
-            <div class="form-group">
-                <label>Turnier-Datum</label>
-                <f:form.textfield property="dateturnier" class="form-control" />
-            </div>
-
-            <div class="form-group">
-                <label>Turnier-Ort</label>
-                <f:form.textfield property="location" class="form-control" />
-            </div>
-
-            <f:form.submit value="Turnier anlegen!" class="btn btn-primary" />
-
-        </f:form>
+<f:render partial="Turnier/Form" arguments="{headline:'Neues Turnier anlegen',
+action:'create',submitmessage:'Turnier anlegen!',turnier:turnier}" />

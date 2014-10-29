@@ -8,8 +8,8 @@ CREATE TABLE tx_turnierverwaltung_domain_model_turnier (
 
 	titel varchar(255) DEFAULT '' NOT NULL,
 	location varchar(255) DEFAULT '' NOT NULL,
-	dateturnier date DEFAULT '0000-00-00',
-	spieler int(11) unsigned DEFAULT '0',
+	dateturnier datetime DEFAULT '0000-00-00 00:00:00',
+	spieler int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -50,7 +50,8 @@ CREATE TABLE tx_turnierverwaltung_domain_model_spieler (
 
 	name varchar(255) DEFAULT '' NOT NULL,
 	strength int(11) DEFAULT '0' NOT NULL,
-	spielmodus int(11) unsigned DEFAULT '0',
+	gender varchar(255) DEFAULT '' NOT NULL,
+	spielmodus int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -120,4 +121,30 @@ CREATE TABLE tx_turnierverwaltung_domain_model_spielmodus (
 	KEY t3ver_oid (t3ver_oid,t3ver_wsid),
  KEY language (l10n_parent,sys_language_uid)
 
+);
+
+#
+# Table structure for table 'tx_turnierverwaltung_turnier_spieler_mm'
+#
+CREATE TABLE tx_turnierverwaltung_turnier_spieler_mm (
+	uid_local int(11) unsigned DEFAULT '0' NOT NULL,
+	uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+	sorting int(11) unsigned DEFAULT '0' NOT NULL,
+	sorting_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+
+	KEY uid_local (uid_local),
+	KEY uid_foreign (uid_foreign)
+);
+
+#
+# Table structure for table 'tx_turnierverwaltung_spieler_spielmodus_mm'
+#
+CREATE TABLE tx_turnierverwaltung_spieler_spielmodus_mm (
+	uid_local int(11) unsigned DEFAULT '0' NOT NULL,
+	uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+	sorting int(11) unsigned DEFAULT '0' NOT NULL,
+	sorting_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+
+	KEY uid_local (uid_local),
+	KEY uid_foreign (uid_foreign)
 );

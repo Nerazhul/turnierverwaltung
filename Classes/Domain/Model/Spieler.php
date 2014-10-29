@@ -49,11 +49,39 @@ class Spieler extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $strength = 0;
 
 	/**
+	 * gender
+	 * 
+	 * @var string
+	 * @validate NotEmpty
+	 */
+	protected $gender = '';
+
+	/**
 	 * spielmodus
 	 * 
-	 * @var \Vaupel\Turnierverwaltung\Domain\Model\Spielmodus
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Vaupel\Turnierverwaltung\Domain\Model\Spielmodus>
 	 */
 	protected $spielmodus = NULL;
+
+	/**
+	 * __construct
+	 */
+	public function __construct() {
+		//Do not remove the next line: It would break the functionality
+		$this->initStorageObjects();
+	}
+
+	/**
+	 * Initializes all ObjectStorage properties
+	 * Do not modify this method!
+	 * It will be rewritten on each save in the extension builder
+	 * You may modify the constructor of this class instead
+	 * 
+	 * @return void
+	 */
+	protected function initStorageObjects() {
+		$this->spielmodus = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+	}
 
 	/**
 	 * Returns the name
@@ -94,9 +122,48 @@ class Spieler extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
+	 * Returns the gender
+	 * 
+	 * @return string $gender
+	 */
+	public function getGender() {
+		return $this->gender;
+	}
+
+	/**
+	 * Sets the gender
+	 * 
+	 * @param string $gender
+	 * @return void
+	 */
+	public function setGender($gender) {
+		$this->gender = $gender;
+	}
+
+	/**
+	 * Adds a Spielmodus
+	 * 
+	 * @param \Vaupel\Turnierverwaltung\Domain\Model\Spielmodus $spielmodu
+	 * @return void
+	 */
+	public function addSpielmodu(\Vaupel\Turnierverwaltung\Domain\Model\Spielmodus $spielmodu) {
+		$this->spielmodus->attach($spielmodu);
+	}
+
+	/**
+	 * Removes a Spielmodus
+	 * 
+	 * @param \Vaupel\Turnierverwaltung\Domain\Model\Spielmodus $spielmoduToRemove The Spielmodus to be removed
+	 * @return void
+	 */
+	public function removeSpielmodu(\Vaupel\Turnierverwaltung\Domain\Model\Spielmodus $spielmoduToRemove) {
+		$this->spielmodus->detach($spielmoduToRemove);
+	}
+
+	/**
 	 * Returns the spielmodus
 	 * 
-	 * @return \Vaupel\Turnierverwaltung\Domain\Model\Spielmodus $spielmodus
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Vaupel\Turnierverwaltung\Domain\Model\Spielmodus> $spielmodus
 	 */
 	public function getSpielmodus() {
 		return $this->spielmodus;
@@ -105,10 +172,10 @@ class Spieler extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the spielmodus
 	 * 
-	 * @param \Vaupel\Turnierverwaltung\Domain\Model\Spielmodus $spielmodus
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Vaupel\Turnierverwaltung\Domain\Model\Spielmodus> $spielmodus
 	 * @return void
 	 */
-	public function setSpielmodus(\Vaupel\Turnierverwaltung\Domain\Model\Spielmodus $spielmodus) {
+	public function setSpielmodus(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $spielmodus) {
 		$this->spielmodus = $spielmodus;
 	}
 

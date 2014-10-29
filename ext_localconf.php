@@ -7,9 +7,11 @@ if (!defined('TYPO3_MODE')) {
     'Vaupel.' . $_EXTKEY,
     'Turnierliste',
     array(
-        'Turnier' => 'list, show, new, create, edit, update, delete',
+        'Turnier' => 'list, show, new, create, edit, update, delete, deleteConfirm',
+        'Spieler' => 'list, show, new, create, edit, update, delete, deleteConfirm',
     ),
     array(
-        'Turnier' => 'list, show, new, create, edit, update, delete',
+        'Turnier' => 'list, show, new, create, edit, update, delete, deleteConfirm',
+        'Spieler' => 'list, show, new, create, edit, update, delete, deleteConfirm',
     )
 );

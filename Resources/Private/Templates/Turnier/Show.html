@@ -1,0 +1,36 @@
+<f:layout name="default"/>
+
+<f:section name="content">
+
+    <h1>Turnier ansehen</h1>
+
+    <dl class="dl-horizontal">
+        <dt>Turnier-Titel:</dt>
+        <dd>{turnier.titel}</dd>
+        <dt>Turnier-Datum</dt>
+        <dd>{turnier.dateturnier}</dd>
+        <dt>Turnier-Ort</dt>
+        <dd>{turnier.location}</dd>
+    </dl>
+
+    <f:if condition="{turnier.spieler}">
+        <ul class="list-group">
+            <f:for each="{turnier.spieler}" as="spieler">
+                <li class="list-group-item">{spieler.name}
+                    <f:link.action action="deleteConfirm" controller="Spieler" arguments="{turnier:turnier,spieler:spieler}" class="btn btn-primary btn-xs pull-right margin-right">DEL</f:link.action>
+                    <f:link.action action="edit" controller="Spieler" arguments="{turnier:turnier,spieler:spieler}" class="btn btn-primary btn-xs pull-right margin-right">EDIT</f:link.action>
+                    <f:link.action action="show" controller="Spieler" arguments="{turnier:turnier,spieler:spieler}" class="btn btn-primary btn-xs pull-right margin-right">SHOW</f:link.action>
+                </li>
+            </f:for>
+        </ul>
+    </f:if>
+
+    <f:link.action action="new" controller="Spieler" arguments="{turnier:turnier}" class="btn btn-primary">Spieler anlegen</f:link.action>
+
+    <br /><br />
+
+    <f:link.action action="list" class="btn btn-primary">
+        Zurück zur Turnier-Liste
+    </f:link.action>
+
+</f:section>

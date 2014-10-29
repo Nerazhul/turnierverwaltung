@@ -51,7 +51,7 @@ class Turnier extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * date of the turnier
 	 * 
-	 * @var \DateTime
+	 * @var string
 	 * @validate NotEmpty
 	 */
 	protected $dateturnier = NULL;
@@ -59,9 +59,49 @@ class Turnier extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * spieler
 	 * 
-	 * @var \Vaupel\Turnierverwaltung\Domain\Model\Spieler
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Vaupel\Turnierverwaltung\Domain\Model\Spieler>
 	 */
 	protected $spieler = NULL;
+
+	/**
+	 * __construct
+	 */
+	public function __construct() {
+		//Do not remove the next line: It would break the functionality
+		$this->initStorageObjects();
+	}
+
+	/**
+	 * Initializes all ObjectStorage properties
+	 * Do not modify this method!
+	 * It will be rewritten on each save in the extension builder
+	 * You may modify the constructor of this class instead
+	 * 
+	 * @return void
+	 */
+	protected function initStorageObjects() {
+		$this->spieler = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+	}
+
+    /**
+     * Adds a Post
+     *
+     *@param Vaupel\Turnierverwaltung\Domain\Model\Spieler $spieler
+     *@return void
+     */
+    public function addSpieler(Vaupel\Turnierverwaltung\Domain\Model\Spieler $spieler){
+        $this->spieler->attach($spieler);
+    }
+
+    /**
+     * Removes a Post
+     *
+     *@param Vaupel\Turnierverwaltung\Domain\Model\Spieler $spielerToRemove The Spieler to be removed
+     *@return void
+     */
+    public function removeSpieler(Vaupel\Turnierverwaltung\Domain\Model\Spieler $spielerToRemove){
+        $this->spieler->detach($spielerToRemove);
+    }
 
 	/**
 	 * Returns the titel
@@ -120,10 +160,10 @@ class Turnier extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		$this->dateturnier = $dateturnier;
 	}
 
-	/**
+		/**
 	 * Returns the spieler
 	 * 
-	 * @return \Vaupel\Turnierverwaltung\Domain\Model\Spieler $spieler
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Vaupel\Turnierverwaltung\Domain\Model\Spieler> $spieler
 	 */
 	public function getSpieler() {
 		return $this->spieler;
@@ -132,10 +172,10 @@ class Turnier extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the spieler
 	 * 
-	 * @param \Vaupel\Turnierverwaltung\Domain\Model\Spieler $spieler
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Vaupel\Turnierverwaltung\Domain\Model\Spieler> $spieler
 	 * @return void
 	 */
-	public function setSpieler(\Vaupel\Turnierverwaltung\Domain\Model\Spieler $spieler) {
+	public function setSpieler(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $spieler) {
 		$this->spieler = $spieler;
 	}
 

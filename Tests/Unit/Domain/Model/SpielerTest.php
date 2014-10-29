@@ -96,9 +96,33 @@ class SpielerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**
 	 * @test
 	 */
+	public function getGenderReturnsInitialValueForString() {
+		$this->assertSame(
+			'',
+			$this->subject->getGender()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setGenderForStringSetsGender() {
+		$this->subject->setGender('Conceived at T3CON10');
+
+		$this->assertAttributeEquals(
+			'Conceived at T3CON10',
+			'gender',
+			$this->subject
+		);
+	}
+
+	/**
+	 * @test
+	 */
 	public function getSpielmodusReturnsInitialValueForSpielmodus() {
+		$newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$this->assertEquals(
-			NULL,
+			$newObjectStorage,
 			$this->subject->getSpielmodus()
 		);
 	}
@@ -106,14 +130,41 @@ class SpielerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**
 	 * @test
 	 */
-	public function setSpielmodusForSpielmodusSetsSpielmodus() {
-		$spielmodusFixture = new \Vaupel\Turnierverwaltung\Domain\Model\Spielmodus();
-		$this->subject->setSpielmodus($spielmodusFixture);
+	public function setSpielmodusForObjectStorageContainingSpielmodusSetsSpielmodus() {
+		$spielmodu = new \Vaupel\Turnierverwaltung\Domain\Model\Spielmodus();
+		$objectStorageHoldingExactlyOneSpielmodus = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$objectStorageHoldingExactlyOneSpielmodus->attach($spielmodu);
+		$this->subject->setSpielmodus($objectStorageHoldingExactlyOneSpielmodus);
 
 		$this->assertAttributeEquals(
-			$spielmodusFixture,
+			$objectStorageHoldingExactlyOneSpielmodus,
 			'spielmodus',
 			$this->subject
 		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function addSpielmoduToObjectStorageHoldingSpielmodus() {
+		$spielmodu = new \Vaupel\Turnierverwaltung\Domain\Model\Spielmodus();
+		$spielmodusObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('attach'), array(), '', FALSE);
+		$spielmodusObjectStorageMock->expects($this->once())->method('attach')->with($this->equalTo($spielmodu));
+		$this->inject($this->subject, 'spielmodus', $spielmodusObjectStorageMock);
+
+		$this->subject->addSpielmodu($spielmodu);
+	}
+
+	/**
+	 * @test
+	 */
+	public function removeSpielmoduFromObjectStorageHoldingSpielmodus() {
+		$spielmodu = new \Vaupel\Turnierverwaltung\Domain\Model\Spielmodus();
+		$spielmodusObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('detach'), array(), '', FALSE);
+		$spielmodusObjectStorageMock->expects($this->once())->method('detach')->with($this->equalTo($spielmodu));
+		$this->inject($this->subject, 'spielmodus', $spielmodusObjectStorageMock);
+
+		$this->subject->removeSpielmodu($spielmodu);
+
 	}
 }

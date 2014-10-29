@@ -121,8 +121,9 @@ class TurnierTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	 * @test
 	 */
 	public function getSpielerReturnsInitialValueForSpieler() {
+		$newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$this->assertEquals(
-			NULL,
+			$newObjectStorage,
 			$this->subject->getSpieler()
 		);
 	}
@@ -130,14 +131,41 @@ class TurnierTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	/**
 	 * @test
 	 */
-	public function setSpielerForSpielerSetsSpieler() {
-		$spielerFixture = new \Vaupel\Turnierverwaltung\Domain\Model\Spieler();
-		$this->subject->setSpieler($spielerFixture);
+	public function setSpielerForObjectStorageContainingSpielerSetsSpieler() {
+		$spieler = new \Vaupel\Turnierverwaltung\Domain\Model\Spieler();
+		$objectStorageHoldingExactlyOneSpieler = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$objectStorageHoldingExactlyOneSpieler->attach($spieler);
+		$this->subject->setSpieler($objectStorageHoldingExactlyOneSpieler);
 
 		$this->assertAttributeEquals(
-			$spielerFixture,
+			$objectStorageHoldingExactlyOneSpieler,
 			'spieler',
 			$this->subject
 		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function addSpielerToObjectStorageHoldingSpieler() {
+		$spieler = new \Vaupel\Turnierverwaltung\Domain\Model\Spieler();
+		$spielerObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('attach'), array(), '', FALSE);
+		$spielerObjectStorageMock->expects($this->once())->method('attach')->with($this->equalTo($spieler));
+		$this->inject($this->subject, 'spieler', $spielerObjectStorageMock);
+
+		$this->subject->addSpieler($spieler);
+	}
+
+	/**
+	 * @test
+	 */
+	public function removeSpielerFromObjectStorageHoldingSpieler() {
+		$spieler = new \Vaupel\Turnierverwaltung\Domain\Model\Spieler();
+		$spielerObjectStorageMock = $this->getMock('TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage', array('detach'), array(), '', FALSE);
+		$spielerObjectStorageMock->expects($this->once())->method('detach')->with($this->equalTo($spieler));
+		$this->inject($this->subject, 'spieler', $spielerObjectStorageMock);
+
+		$this->subject->removeSpieler($spieler);
+
 	}
 }

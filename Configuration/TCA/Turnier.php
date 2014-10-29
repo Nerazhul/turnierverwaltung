@@ -119,28 +119,47 @@ $GLOBALS['TCA']['tx_turnierverwaltung_domain_model_turnier'] = array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:turnierverwaltung/Resources/Private/Language/locallang_db.xlf:tx_turnierverwaltung_domain_model_turnier.dateturnier',
 			'config' => array(
-				'dbType' => 'date',
+				'dbType' => 'datetime',
 				'type' => 'input',
-				'size' => 7,
-				'eval' => 'date,required',
+				'size' => 12,
+				'eval' => 'datetime,required',
 				'checkbox' => 0,
-				'default' => '0000-00-00'
+				'default' => '0000-00-00 00:00:00'
 			),
 		),
 		'spieler' => array(
-			'exclude' => 1,
+			'exclude' => 0,
 			'label' => 'LLL:EXT:turnierverwaltung/Resources/Private/Language/locallang_db.xlf:tx_turnierverwaltung_domain_model_turnier.spieler',
 			'config' => array(
 				'type' => 'inline',
 				'foreign_table' => 'tx_turnierverwaltung_domain_model_spieler',
-				'minitems' => 0,
-				'maxitems' => 1,
-				'appearance' => array(
-					'collapseAll' => 0,
-					'levelLinksPosition' => 'top',
-					'showSynchronizationLink' => 1,
-					'showPossibleLocalizationRecords' => 1,
-					'showAllLocalizationLink' => 1
+				'MM' => 'tx_turnierverwaltung_turnier_spieler_mm',
+				'size' => 10,
+				'autoSizeMax' => 30,
+				'maxitems' => 9999,
+				'multiple' => 0,
+				'wizards' => array(
+					'_PADDING' => 1,
+					'_VERTICAL' => 1,
+					'edit' => array(
+						'type' => 'popup',
+						'title' => 'Edit',
+						'script' => 'wizard_edit.php',
+						'icon' => 'edit2.gif',
+						'popup_onlyOpenIfSelected' => 1,
+						'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
+						),
+					'add' => Array(
+						'type' => 'script',
+						'title' => 'Create new',
+						'icon' => 'add.gif',
+						'params' => array(
+							'table' => 'tx_turnierverwaltung_domain_model_spieler',
+							'pid' => '###CURRENT_PID###',
+							'setValue' => 'prepend'
+							),
+						'script' => 'wizard_add.php',
+					),
 				),
 			),
 		),

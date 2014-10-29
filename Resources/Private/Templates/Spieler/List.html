@@ -1,0 +1,20 @@
+<f:layout name="default"/>
+
+<f:section name="content">
+
+<h1>Spieler-Liste</h1>
+
+
+    <f:for each="{spielers}" as="spieler">
+        <tr>
+            <td><f:link.action action="show" arguments="{spieler : spieler}"> {spieler.name}</f:link.action></td>
+            <td><f:link.action action="edit" arguments="{spieler : spieler}">Edit</f:link.action></td>
+            <td><f:link.action action="delete" arguments="{spieler : spieler}">Delete</f:link.action></td>
+        </tr>
+    </f:for>
+
+
+
+<f:link.action action="new">Neuer Spieler</f:link.action>
+
+</f:section>

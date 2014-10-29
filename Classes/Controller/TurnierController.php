@@ -40,6 +40,14 @@ class TurnierController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	 */
 	protected $turnierRepository = NULL;
 
+    /**
+     * Persistence Manager
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
+     * @inject
+     */
+    protected $persistenceManager;
+
 	/**
 	 * action list
 	 * 
@@ -63,23 +71,23 @@ class TurnierController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	/**
 	 * action new
 	 * 
-	 * @param \Vaupel\Turnierverwaltung\Domain\Model\Turnier $newTurnier
+	 * @param \Vaupel\Turnierverwaltung\Domain\Model\Turnier $turnier
 	 * @ignorevalidation $newTurnier
 	 * @return void
 	 */
-	public function newAction(\Vaupel\Turnierverwaltung\Domain\Model\Turnier $newTurnier = NULL) {
-		$this->view->assign('newTurnier', $newTurnier);
+	public function newAction(\Vaupel\Turnierverwaltung\Domain\Model\Turnier $turnier = NULL) {
+		$this->view->assign('turnier', $turnier);
 	}
 
 	/**
 	 * action create
 	 * 
-	 * @param \Vaupel\Turnierverwaltung\Domain\Model\Turnier $newTurnier
+	 * @param \Vaupel\Turnierverwaltung\Domain\Model\Turnier $turnier
 	 * @return void
 	 */
-	public function createAction(\Vaupel\Turnierverwaltung\Domain\Model\Turnier $newTurnier) {
+	public function createAction(\Vaupel\Turnierverwaltung\Domain\Model\Turnier $turnier) {
 		$this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See <a href="http://wiki.typo3.org/T3Doc/Extension_Builder/Using_the_Extension_Builder#1._Model_the_domain" target="_blank">Wiki</a>', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
-		$this->turnierRepository->add($newTurnier);
+		$this->turnierRepository->add($turnier);
 		$this->redirect('list');
 	}
 
@@ -117,5 +125,15 @@ class TurnierController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 		$this->turnierRepository->remove($turnier);
 		$this->redirect('list');
 	}
+
+    /**
+     * action delteconfirm
+     *
+     * @param \Vaupel\Turnierverwaltung\Domain\Model\Turnier $turnier
+     * @return void
+     */
+    public function deleteConfirmAction(\Vaupel\Turnierverwaltung\Domain\Model\Turnier $turnier = null) {
+        $this->view->assign('turnier', $turnier);
+    }
 
 }

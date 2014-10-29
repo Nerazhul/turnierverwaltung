@@ -1,0 +1,18 @@
+<f:layout name="default"/>
+
+<f:section name="content">
+
+<h1>Turnier wirklich löschen?</h1>
+
+<f:form action="delete" object="{turnier}" name="turnier" additionalAttributes="{role: 'form'}">
+
+    <dl class="dl-horizontal">
+        <dd>Das Turnier: {turnier.titel} löschen?</dd>
+    </dl>
+
+    <f:form.submit value="Turnier löschen!" class="btn btn-primary" />
+
+    <f:link.action action="list" class="btn btn-primary">Abbrechen</f:link.action>
+</f:form>
+
+</f:section>
