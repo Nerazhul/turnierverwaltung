@@ -55,24 +55,30 @@ class SpielmodusController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 	/**
 	 * action new
 	 * 
-	 * @param \Vaupel\Turnierverwaltung\Domain\Model\Spielmodus $newSpielmodus
-	 * @ignorevalidation $newSpielmodus
+         * @param \Vaupel\Turnierverwaltung\Domain\Model\Turnier $turnier
+         * @param \Vaupel\Turnierverwaltung\Domain\Model\Spieler $spieler
+	 * @param \Vaupel\Turnierverwaltung\Domain\Model\Spielmodus $spielmodus
+	 * @ignorevalidation $spielmodus
 	 * @return void
 	 */
-	public function newAction(\Vaupel\Turnierverwaltung\Domain\Model\Spielmodus $newSpielmodus = NULL) {
-		$this->view->assign('newSpielmodus', $newSpielmodus);
+	public function newAction(\Vaupel\Turnierverwaltung\Domain\Model\Turnier $turnier,\Vaupel\Turnierverwaltung\Domain\Model\Spieler $spieler,
+                \Vaupel\Turnierverwaltung\Domain\Model\Spielmodus $spielmodus = NULL) {
+            $this->view->assign('turnier', $turnier);
+            $this->view->assign('spieler', $spieler);
+            $this->view->assign('spielmodus', $spielmodus);
 	}
 
 	/**
 	 * action create
 	 * 
-	 * @param \Vaupel\Turnierverwaltung\Domain\Model\Spielmodus $newSpielmodus
+         * @param \Vaupel\Turnierverwaltung\Domain\Model\Spieler $spieler
+	 * @param \Vaupel\Turnierverwaltung\Domain\Model\Spielmodus $spielmodus
 	 * @return void
 	 */
-	public function createAction(\Vaupel\Turnierverwaltung\Domain\Model\Spielmodus $newSpielmodus) {
-		$this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See <a href="http://wiki.typo3.org/T3Doc/Extension_Builder/Using_the_Extension_Builder#1._Model_the_domain" target="_blank">Wiki</a>', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
-		$this->spielmodusRepository->add($newSpielmodus);
-		$this->redirect('list');
+	public function createAction(\Vaupel\Turnierverwaltung\Domain\Model\Spieler $spieler,\Vaupel\Turnierverwaltung\Domain\Model\Spielmodus $spielmodus) {
+		$spieler->addSpielmodu($spielmodus);
+                $this->objectManager->get('Vaupel\\Turnierverwaltung\\Domain\\Repository\\SpielerRepository')->update($spieler);
+		$this->redirect('show','Turnier','NULL',array('turnier'=>$turnier));
 	}
 
 	/**

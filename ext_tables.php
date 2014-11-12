@@ -9,6 +9,7 @@ if (!defined('TYPO3_MODE')) {
     'Tennisturnier'
 );
 
+
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Turnierverwaltung');
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_turnierverwaltung_domain_model_turnier', 'EXT:turnierverwaltung/Resources/Private/Language/locallang_csh_tx_turnierverwaltung_domain_model_turnier.xlf');
@@ -97,3 +98,5 @@ $GLOBALS['TCA']['tx_turnierverwaltung_domain_model_spielmodus'] = array(
 		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_turnierverwaltung_domain_model_spielmodus.gif'
 	),
 );
+
+

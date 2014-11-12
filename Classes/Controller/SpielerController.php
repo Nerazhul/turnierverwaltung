@@ -62,60 +62,73 @@ class SpielerController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
 	/**
 	 * action new
-	 * 
-	 * @param \Vaupel\Turnierverwaltung\Domain\Model\Spieler $newSpieler
-	 * @ignorevalidation $newSpieler
+	 *
+         * @param \Vaupel\Turnierverwaltung\Domain\Model\Turnier $turnier
+	 * @param \Vaupel\Turnierverwaltung\Domain\Model\Spieler $spieler
+         * @param \Vaupel\Turnierverwaltung\Domain\Model\Spielmodus $spielmodus
+	 * @ignorevalidation $spieler
 	 * @return void
 	 */
-	public function newAction(\Vaupel\Turnierverwaltung\Domain\Model\Spieler $newSpieler = NULL) {
-		$this->view->assign('newSpieler', $newSpieler);
+	public function newAction(\Vaupel\Turnierverwaltung\Domain\Model\Turnier $turnier,\Vaupel\Turnierverwaltung\Domain\Model\Spieler $spieler = NULL,
+                \Vaupel\Turnierverwaltung\Domain\Model\Spielmodus $spielmodus) {
+        $this->view->assign('turnier', $turnier);
+        $this->view->assign('spieler', $spieler);
+        $this->view->assign('spielmodus', $spielmodus);
 	}
 
 	/**
 	 * action create
-	 * 
-	 * @param \Vaupel\Turnierverwaltung\Domain\Model\Spieler $newSpieler
+	 *
+         * @param \Vaupel\Turnierverwaltung\Domain\Model\Turnier $turnier
+	 * @param \Vaupel\Turnierverwaltung\Domain\Model\Spieler $spieler
+         * @param \Vaupel\Turnierverwaltung\Domain\Model\Spielmodus $spielmodus
 	 * @return void
 	 */
-	public function createAction(\Vaupel\Turnierverwaltung\Domain\Model\Spieler $newSpieler) {
-		$this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See <a href="http://wiki.typo3.org/T3Doc/Extension_Builder/Using_the_Extension_Builder#1._Model_the_domain" target="_blank">Wiki</a>', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
-		$this->spielerRepository->add($newSpieler);
-		$this->redirect('list');
+	public function createAction(\Vaupel\Turnierverwaltung\Domain\Model\Turnier $turnier,\Vaupel\Turnierverwaltung\Domain\Model\Spieler $spieler,
+                \Vaupel\Turnierverwaltung\Domain\Model\Spielmodus $spielmodus) {
+		//$this->spielerRepository->add($spieler);
+        $spieler->addSpielmodu($spielmodus);
+        $turnier->addSpieler($spieler);
+        $this->objectManager->get('Vaupel\\Turnierverwaltung\\Domain\\Repository\\TurnierRepository')->update($turnier);
+        
+	$this->redirect('show','Turnier','NULL',array('turnier'=>$turnier));
 	}
 
 	/**
 	 * action edit
-	 * 
+	 *
+     * @param \Vaupel\Turnierverwaltung\Domain\Model\Turnier $turnier
 	 * @param \Vaupel\Turnierverwaltung\Domain\Model\Spieler $spieler
 	 * @ignorevalidation $spieler
 	 * @return void
 	 */
-	public function editAction(\Vaupel\Turnierverwaltung\Domain\Model\Spieler $spieler) {
-		$this->view->assign('spieler', $spieler);
+	public function editAction(\Vaupel\Turnierverwaltung\Domain\Model\Turnier $turnier, \Vaupel\Turnierverwaltung\Domain\Model\Spieler $spieler) {
+        $this->view->assign('turnier', $turnier);
+        $this->view->assign('spieler', $spieler);
 	}
 
 	/**
 	 * action update
-	 * 
+	 *
+     * @param \Vaupel\Turnierverwaltung\Domain\Model\Turnier $turnier
 	 * @param \Vaupel\Turnierverwaltung\Domain\Model\Spieler $spieler
 	 * @return void
 	 */
-	public function updateAction(\Vaupel\Turnierverwaltung\Domain\Model\Spieler $spieler) {
-		$this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See <a href="http://wiki.typo3.org/T3Doc/Extension_Builder/Using_the_Extension_Builder#1._Model_the_domain" target="_blank">Wiki</a>', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
-		$this->spielerRepository->update($spieler);
-		$this->redirect('list');
+	public function updateAction(\Vaupel\Turnierverwaltung\Domain\Model\Turnier $turnier,\Vaupel\Turnierverwaltung\Domain\Model\Spieler $spieler) {
+	$this->spielerRepository->update($spieler);
+        $this->redirect('show','Turnier','NULL',array('turnier'=>$turnier));
 	}
 
 	/**
 	 * action delete
-	 * 
+	 *
+     * @param \Vaupel\Turnierverwaltung\Domain\Model\Turnier $turnier
 	 * @param \Vaupel\Turnierverwaltung\Domain\Model\Spieler $spieler
 	 * @return void
 	 */
-	public function deleteAction(\Vaupel\Turnierverwaltung\Domain\Model\Spieler $spieler) {
-		$this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See <a href="http://wiki.typo3.org/T3Doc/Extension_Builder/Using_the_Extension_Builder#1._Model_the_domain" target="_blank">Wiki</a>', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
-		$this->spielerRepository->remove($spieler);
-		$this->redirect('list');
+	public function deleteConfirmAction(\Vaupel\Turnierverwaltung\Domain\Model\Turnier $turnier,\Vaupel\Turnierverwaltung\Domain\Model\Spieler $spieler) {
+	$this->spielerRepository->remove($spieler);
+        $this->redirect('show','Turnier','NULL',array('turnier'=>$turnier));
 	}
 
 }

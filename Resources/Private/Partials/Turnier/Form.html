@@ -1,5 +1,7 @@
 <h1>{headline}</h1>
 
+<div class="alert alert-danger"><f:render partial="Errors" arguments="{object:'turnier'}" /></div>
+
 <f:form action="{action}" object="{turnier}" name="turnier" additionalAttributes="{role:'form'}">
 
     <div class="form-group">
@@ -9,7 +11,7 @@
 
     <div class="form-group">
         <label>Turnier-Datum</label>
-        <f:form.textfield property="dateturnier" class="form-control" />
+        <f:form.textfield id="datepicker" property="dateturnier" value="{f:format.date(date:'{turnier.dateturnier}', format: 'd.m.Y')}" size="12" />
     </div>
 
     <div class="form-group">

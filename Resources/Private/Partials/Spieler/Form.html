@@ -1,5 +1,7 @@
 <h1>{headline}</h1>
 
+<div class="alert alert-danger"><f:render partial="Errors" arguments="{object:'spieler'}" /></div>
+
 <f:form action="{action}" object="{spieler}" name="spieler" arguments="{turnier:turnier}" additionalAttributes="{role:'form'}">
     <div class="form-group">
         <label>Spieler-Name</label>
@@ -8,16 +10,18 @@
 
     <div class="form-group">
         <label>Spieler-Stärke</label>
-        <f:form.select  options="{strengthone:'1',strengthtwo:'2',strengththree:'3'}" property="strength" class="form-control" />
+        <f:form.select  options="{1:'1',2:'2',3:'3'}" property="strength" class="form-control" />
     </div>
 
     <div class="form-group">
         <label>Spieler-Modus</label>
+        <f:form.checkbox name="einzel" value="{spielmodus.einzel}" checked="{spielmodus.einzel}=={'1'}" /> Anmelden<br />
+        <f:form.select  options="{einzel:'1',doppel:'2',mixed:'3'}" property="spielmodus" class="form-control" />
     </div>
 
     <div class="form-group">
-        <label>Spieler-Stärke</label>
-        <f:form.select  options="{male:'male',female:'female'}" property="gender" class="form-control" />
+        <label>Spieler-Geschlecht</label>
+        <f:form.select  options="{male:'männlich',female:'weiblich'}" property="gender" class="form-control" />
     </div>
 
     <f:form.submit value="{submitmessage}" class="btn btn-primary" />

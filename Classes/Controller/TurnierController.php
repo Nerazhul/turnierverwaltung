@@ -72,7 +72,7 @@ class TurnierController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	 * action new
 	 * 
 	 * @param \Vaupel\Turnierverwaltung\Domain\Model\Turnier $turnier
-	 * @ignorevalidation $newTurnier
+	 * @ignorevalidation $turnier
 	 * @return void
 	 */
 	public function newAction(\Vaupel\Turnierverwaltung\Domain\Model\Turnier $turnier = NULL) {

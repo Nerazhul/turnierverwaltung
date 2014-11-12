@@ -101,24 +101,27 @@ $GLOBALS['TCA']['tx_turnierverwaltung_domain_model_spielmodus'] = array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:turnierverwaltung/Resources/Private/Language/locallang_db.xlf:tx_turnierverwaltung_domain_model_spielmodus.single',
 			'config' => array(
-				'type' => 'check',
-				'default' => 0
+                'type' => 'input',
+                'size' => 4,
+                'eval' => 'int'
 			)
 		),
 		'doppel' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:turnierverwaltung/Resources/Private/Language/locallang_db.xlf:tx_turnierverwaltung_domain_model_spielmodus.doppel',
 			'config' => array(
-				'type' => 'check',
-				'default' => 0
+                'type' => 'input',
+                'size' => 4,
+                'eval' => 'int'
 			)
 		),
 		'mixed' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:turnierverwaltung/Resources/Private/Language/locallang_db.xlf:tx_turnierverwaltung_domain_model_spielmodus.mixed',
 			'config' => array(
-				'type' => 'check',
-				'default' => 0
+                'type' => 'input',
+                'size' => 4,
+                'eval' => 'int'
 			)
 		),
 		

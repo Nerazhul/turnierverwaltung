@@ -35,23 +35,23 @@ class Spielmodus extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	/**
 	 * single
 	 * 
-	 * @var boolean
+	 * @var integer
 	 */
-	protected $single = FALSE;
+	protected $single = 0;
 
 	/**
 	 * doppel
 	 * 
-	 * @var boolean
+	 * @var integer
 	 */
-	protected $doppel = FALSE;
+	protected $doppel = 0;
 
 	/**
 	 * mixed
 	 * 
-	 * @var boolean
+	 * @var integer
 	 */
-	protected $mixed = FALSE;
+	protected $mixed = 0;
 
 	/**
 	 * Returns the single

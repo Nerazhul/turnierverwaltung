@@ -14,15 +14,25 @@
     </dl>
 
     <f:if condition="{turnier.spieler}">
+        <f:then>
         <ul class="list-group">
             <f:for each="{turnier.spieler}" as="spieler">
-                <li class="list-group-item">{spieler.name}
+                <li class="list-group-item"><b>Name: </b>{spieler.name} | <b>Stärke: </b>{spieler.strength} | <b>Spielmodus: </b>{spieler.spielmodus.einzel} | <b>Geschlecht: </b>{spieler.gender}
                     <f:link.action action="deleteConfirm" controller="Spieler" arguments="{turnier:turnier,spieler:spieler}" class="btn btn-primary btn-xs pull-right margin-right">DEL</f:link.action>
-                    <f:link.action action="edit" controller="Spieler" arguments="{turnier:turnier,spieler:spieler}" class="btn btn-primary btn-xs pull-right margin-right">EDIT</f:link.action>
-                    <f:link.action action="show" controller="Spieler" arguments="{turnier:turnier,spieler:spieler}" class="btn btn-primary btn-xs pull-right margin-right">SHOW</f:link.action>
+                    <f:link.action action="edit" controller="Spieler" arguments="{turnier:turnier,spieler:spieler,spielmodus:spielmodus}" class="btn btn-primary btn-xs pull-right margin-right">EDIT</f:link.action>
+                    <f:if condition="{turnier.spieler.spielmodus} == NULL">
+                        <f:then>
+                            <f:link.action action="new" controller="Spielmodus" arguments="{turnier:turnier,spieler:spieler,spielmodus:spielmodus}" class="btn btn-primary btn-xs pull-right margin-right">Spielmodus eintragen</f:link.action>
+                        </f:then>
+                        <f:else>
+                            <f:link.action action="edit" controller="Spielmodus" arguments="{turnier:turnier,spieler:spieler,spielmodus:spielmodus}" class="btn btn-primary btn-xs pull-right margin-right">Spielmodus ändern</f:link.action>  
+                        </f:else>
+                    </f:if>
                 </li>
             </f:for>
         </ul>
+        </f:then>
+        <f:else>Es sind keine Spieler für dieses Turnier registriert!<br><br></f:else>
     </f:if>
 
     <f:link.action action="new" controller="Spieler" arguments="{turnier:turnier}" class="btn btn-primary">Spieler anlegen</f:link.action>

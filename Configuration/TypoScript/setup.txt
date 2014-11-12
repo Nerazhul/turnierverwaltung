@@ -56,10 +56,14 @@ page {
         includeCSS {
                 bootstrap = EXT:turnierverwaltung/Resources/Public/Bootstrap/css/bootstrap.min.css
                 turnierverwaltung = EXT:turnierverwaltung/Resources/Public/Css/turnierverwaltung.css
+                turnierverwaltungdp = EXT:turnierverwaltung/Resources/Public/Scripts/jquery-ui.css
         }
         includeJSlibs {
                 jquery = //code.jquery.com/jquery.js
                 jquery.internal = 1
                 bootstrap = EXT:turnierverwaltung/Resources/Public/Bootstrap/js/bootstrap.min.js
+                turnierverwaltungjs3 = EXT:turnierverwaltung/Resources/Public/Scripts/jquery.js
+                turnierverwaltungjs = EXT:turnierverwaltung/Resources/Public/Scripts/jquery-ui.min.js
+                turnierverwaltungjs2 = EXT:turnierverwaltung/Resources/Public/Scripts/turnierverwaltungdatepicker.js
         }
 }

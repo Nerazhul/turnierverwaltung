@@ -1,0 +1,23 @@
+<h1>{headline}</h1>
+
+<div class="alert alert-danger"><f:render partial="Errors" arguments="{object:'spielmodus'}" /></div>
+
+<f:form action="{action}" object="{spielmodus}" name="spielmodus" arguments="{turnier:turnier,spieler:spieler}" additionalAttributes="{role:'form'}">
+    <div class="form-group">
+        <label>Einzel</label>
+        <f:form.select options="{0:'Kein Einzel',1:'Einzel'}" property="single" class="form-control" />
+    </div>
+    
+    <div class="form-group">
+        <label>Doppel</label>
+        <f:form.select options="{0:'Kein Doppel',1:'Doppel'}" property="doppel" class="form-control" />
+    </div>  
+    
+    <div class="form-group">
+        <label>Mixed</label>
+        <f:form.select options="{0:'Kein Mixed',1:'Mixed'}" property="mixed" class="form-control" />
+    </div>  
+
+    <f:form.submit value="{submitmessage}" class="btn btn-primary" />
+    
+</f:form>
